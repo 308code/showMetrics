@@ -1,0 +1,21 @@
+{
+  "name": "show-metrics",
+  "version": "1.0.0",
+  "description": "GKM web application that records metrics relating to tv shows developed.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bill Camphire <308code@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.5.9",
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.8"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}

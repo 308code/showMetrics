@@ -1,0 +1,195 @@
+var Show = require('../models/showModel');
+
+module.exports = function(app) {
+    app.get('/api/setupShows', function (req, res) {
+        //seed the database
+        var starterShows = [{
+            title: 'Does God Still Heal',
+            showNumber: 1,
+            season: 'GK09',
+            series: '1 of 1',
+            wraps: '2016-02-25',
+            doner: '2016-02-25',
+            spots: 'unknown',
+            credits: true,
+            aired: '2016-12-31',
+            tease: [{
+                label: 'Tease',
+                position: 1,
+                start: 123456,
+                end: 123789,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            open: [{
+                label: 'Open',
+                position: 2,
+                start: 123987,
+                end: 124987,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            intro: [{
+                label: 'Intro',
+                position: 3,
+                start: 123987,
+                end: 124987,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            message: [{
+                label: 'Message',
+                position: 4,
+                part: 'One',
+                start: 123456,
+                end: 123789,
+                filename: 'File Name',
+                details: 'Details about show!'
+            },
+            {
+                label: 'Message',
+                position: 9,
+                part: 'Two',
+                start: 123456,
+                end: 123789,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            product: [{
+                spot: 'Does God Still Heal?',
+                position: 5,
+                details: 'Details about show!'
+            }],
+            middle: [{
+                label: 'Middle',
+                position: 6,
+                start: 123987,
+                end: 124987,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            interview: [{
+                label: 'Interview',
+                position: 7,
+                part: 'One',
+                start: 123456,
+                end: 123789,
+                filename: 'File Name',
+                details: 'Details about show!'
+            },
+            {
+                label: 'Interview',
+                position: 8,
+                part: 'Two',
+                start: 123456,
+                end: 123789,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            close: [{
+                label: 'Close',
+                position: 9,
+                start: 123987,
+                end: 124987,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }]
+        },
+        {
+            title: 'Is God Listening',
+            showNumber: 1,
+            season: 'GK09',
+            series: '1 of 1',
+            wraps: '2016-02-25',
+            doner: '2016-02-25',
+            spots: 'unknown',
+            credits: true,
+            aired: '2016-12-31',
+            tease: [{
+                label: 'Tease',
+                position: 1,
+                start: 123456,
+                end: 123789,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            open: [{
+                label: 'Open',
+                position: 2,
+                start: 123987,
+                end: 124987,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            intro: [{
+                label: 'Intro',
+                position: 3,
+                start: 123987,
+                end: 124987,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            message: [{
+                label: 'Message',
+                position: 4,
+                part: 'One',
+                start: 123456,
+                end: 123789,
+                filename: 'File Name',
+                details: 'Details about show!'
+            },
+            {
+                label: 'Message',
+                position: 9,
+                part: 'Two',
+                start: 123456,
+                end: 123789,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            product: [{
+                spot: 'Is God Listening',
+                position: 5,
+                details: 'Details about show!'
+            }],
+            middle: [{
+                label: 'Middle',
+                position: 6,
+                start: 123987,
+                end: 124987,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            interview: [{
+                label: 'Interview',
+                position: 7,
+                part: 'One',
+                start: 123456,
+                end: 123789,
+                filename: 'File Name',
+                details: 'Details about show!'
+            },
+            {
+                label: 'Interview',
+                position: 8,
+                part: 'Two',
+                start: 123456,
+                end: 123789,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }],
+            close: [{
+                label: 'Close',
+                position: 9,
+                start: 123987,
+                end: 124987,
+                filename: 'File Name',
+                details: 'Details about show!'
+            }]
+        }];
+
+        Show.create(starterShows, function(err, results){
+            res.send(results);
+        });
+    });
+};
