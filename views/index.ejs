@@ -1,35 +1,84 @@
 <HTML ng-app='gmkShowMetricsApp'>
-   <HEAD>
-      <TITLE>
-         A Small Hello 
-      </TITLE>
-      <link href="/static/css/homePage.css" type="text/css" rel="stylesheet"/>
-      <script src="/static/js/lib/jquery-3.1.1.min.js"></script>
-      <script src="/static/js/lib/angular.min.js"></script>
-      <script src="/static/app.js"></script>
-   </HEAD>
-<BODY ng-controller='homePageController'>
-   <H1>Hi</H1>
-   <p>{{temp}}</p>
-   <P>This is very minimal "hello world" HTML document.</P> 
-   <!--<form method="POST" action="/show">
-       First Name: <input type="text" id="firstname" name="firstname" />
-       </br>
-       Last Name: <input type="text" id="lastname" name="lastname" />
-       </br>
-       <input type="submit" value="submit"/>
-   </form>-->
-   <!--<script>
-    $.ajax({
-        type: "POST",
-        url: "/showjson",
-        data: JSON.stringify({
-            firstname: 'Jane',
-            lastname: 'Doe'
-        }),
-        dataType: 'json',
-        contentType: 'application/json'
-    });
-   </script>-->
+
+<HEAD>
+    <TITLE>Show Metric Tracker</TITLE>
+    <link href="/static/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/homePage.css" type="text/css" rel="stylesheet" />
+</HEAD>
+
+<BODY>
+    <div class='container'>
+        <nav class="navbar header">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="http://www.garykeesee.com">
+                        <img src="/static/images/GKM_logo_web1.png" /></a>
+                </div>
+                <ul class="nav navbar-nav navbar-right topPad">
+                    <li>
+                        <button class="btn btn-primary navbar-btn">Home</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary navbar-btn">Create</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div ng-controller='homePageController'>
+            <!--<div ng-view>-->
+            <table onload="getAllShows()" class='table-striped table'>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Show #</th>
+                        <th>Part/Series</th>
+                        <th>Wraps Taped</th>
+                        <th>Dates Aired</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="show in shows">
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" 
+                                type="button" data-toggle="dropdown">
+                                {{show.title}} <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Copy</a></li>
+                                    <li><a href="#">Display</a></li>
+                                    <li><a href="#">Update</a></li>
+                                    <li><a href="#">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>{{show.showNumber}}</td>
+                        <td>{{show.series}}</td>
+                        <td>{{show.wraps}}</td>
+                        <td>{{show.aired}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--</div>-->
+        </div>
+        <nav class="navbar footer">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button class="btn btn-primary navbar-btn">Home</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary navbar-btn">Create</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <script src="/static/js/lib/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/lib/angular.min.js"></script>
+    <script src="/static/js/lib/bootstrap.min.js"></script>
+    <!--<script src="/static/js/lib/angular-resource.min.js"></script>-->
+    <script src="/static/app.js"></script>
 </BODY>
+
 </HTML>
