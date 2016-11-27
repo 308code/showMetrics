@@ -78,6 +78,3 @@ app.listen(port);
 // app.get('/api', function (request, response) {
 //     response.json({ firstname: 'Bill', lastname: 'camphire' });
 // });
-
-
-

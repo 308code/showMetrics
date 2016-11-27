@@ -3,7 +3,7 @@ li{
 }
 .header{
     background-color: #d5e0bc;
-    /*padding-bottom: 40px;*/
+    /*padding-bottom: 20px;*/
     border-bottom: solid 1px forestgreen;
 }
 .footer{
@@ -13,5 +13,5 @@ li{
 }
 
 .topPad{
-    padding-top: 35px;
+    padding-top: 55px;
 }

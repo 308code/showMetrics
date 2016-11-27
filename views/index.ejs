@@ -4,6 +4,14 @@
     <TITLE>Show Metric Tracker</TITLE>
     <link href="/static/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     <link href="/static/css/homePage.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/displayPage.css" type="text/css" rel="stylesheet" />
+
+    <script src="/static/js/lib/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/lib/angular.min.js"></script>
+    <script src="/static/js/lib/angular-route.min.js"></script>
+    <script src="/static/js/lib/bootstrap.min.js"></script>
+    <!--<script src="/static/js/lib/angular-resource.min.js"></script>-->
+    <script src="/static/app.js"></script>
 </HEAD>
 
 <BODY>
@@ -16,69 +24,32 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right topPad">
                     <li>
-                        <button class="btn btn-primary navbar-btn">Home</button>
+                        <a class="btn btn-primary btn-lg active" role="button" href='#!'
+                        style="padding: 5px;">Home</a>
                     </li>
                     <li>
-                        <button class="btn btn-primary navbar-btn">Create</button>
+                        <a class="btn btn-primary btn-lg active" role="button" href='#!'
+                        style="padding: 5px;">Create</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <div ng-controller='homePageController'>
-            <!--<div ng-view>-->
-            <table onload="getAllShows()" class='table-striped table'>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Show #</th>
-                        <th>Part/Series</th>
-                        <th>Wraps Taped</th>
-                        <th>Dates Aired</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="show in shows">
-                        <td>
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" 
-                                type="button" data-toggle="dropdown">
-                                {{show.title}} <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Copy</a></li>
-                                    <li><a href="#">Display</a></li>
-                                    <li><a href="#">Update</a></li>
-                                    <li><a href="#">Delete</a></li>
-                                </ul>
-                            </div>
-                        </td>
-                        <td>{{show.showNumber}}</td>
-                        <td>{{show.series}}</td>
-                        <td>{{show.wraps}}</td>
-                        <td>{{show.aired}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <!--</div>-->
+        <div ng-view>
         </div>
         <nav class="navbar footer">
             <div class="container-fluid">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <button class="btn btn-primary navbar-btn">Home</button>
+                        <a class="btn btn-primary btn-lg active" role="button" href='#!'
+                        style="padding: 5px;">Home</a>
                     </li>
                     <li>
-                        <button class="btn btn-primary navbar-btn">Create</button>
+                        <a class="btn btn-primary btn-lg active" role="button" href='#!'
+                        style="padding: 5px;">Create</a>
                     </li>
                 </ul>
             </div>
         </nav>
     </div>
-
-    <script src="/static/js/lib/jquery-3.1.1.min.js"></script>
-    <script src="/static/js/lib/angular.min.js"></script>
-    <script src="/static/js/lib/bootstrap.min.js"></script>
-    <!--<script src="/static/js/lib/angular-resource.min.js"></script>-->
-    <script src="/static/app.js"></script>
 </BODY>
-
 </HTML>
