@@ -1,31 +1,34 @@
-<table onload="getAllShows()" class='table-striped table'>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Show #</th>
-            <th>Part/Series</th>
-            <th>Wraps Taped</th>
-            <th>Dates Aired</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="show in shows | orderBy:'wraps'">
-            <td>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+<div id='homePage'>
+    <table class='table-striped table'>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Show #</th>
+                <th>Part/Series</th>
+                <th>Wraps Taped</th>
+                <th>Dates Aired</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="show in shows.data | orderBy:'wraps'">
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" 
+                        data-toggle="dropdown" style="max-width: 500px; white-space: normal;">
                                 {{show.title}} <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li><a ng-click="copyShow(show._id)"  href="#">Copy</a></li>
-                        <li><a ng-href="#!/display/{{show._id}}">Display</a></li>
-                        <li><a href="#">Update</a></li>
-                        <li><a ng-click="deleteShow(show._id)"  href="#">Delete</a></li>
-                    </ul>
-                </div>
-            </td>
-            <td>{{show.showNumber}}</td>
-            <td>{{show.series}}</td>
-            <td>{{show.wraps}}</td>
-            <td>{{show.aired}}</td>
-        </tr>
-    </tbody>
-</table>
+                        <ul class="dropdown-menu">
+                            <li><a ng-click="copyShow(show._id)" href="#">Copy</a></li>
+                            <li><a href="#!/display/{{show._id}}">Display</a></li>
+                            <li><a href="#">Update</a></li>
+                            <li><a ng-click="deleteShow(show._id)" href="#">Delete</a></li>
+                        </ul>
+                    </div>
+                </td>
+                <td>{{show.showNumber}}</td>
+                <td>{{show.series}}</td>
+                <td>{{show.wraps}}</td>
+                <td>{{show.aired}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

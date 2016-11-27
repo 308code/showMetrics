@@ -11,60 +11,66 @@ gmkShowMetricsApp.config(function($routeProvider) {
         })
 });
 
-gmkShowMetricsApp.controller('displayController', function($scope,$http,$routeParams) {
-    $http({ method: 'GET', url: '/api/show/'+$routeParams.id , type: 'application/json' })
-        .then(function(response) {
-            $scope.show = response.data;
-        }, function(response) {
-            $log.info(response);
-        });
-});
+gmkShowMetricsApp.service('showService', function($http) {
+    var self = this;
 
-gmkShowMetricsApp.controller('mainController', function($scope, $log, $http) {
-    $scope.copyShow = function(id) {
-        $http({ method: 'POST', url: '/api/show/copy/' + id, type: 'application/json' })
+    this.getShow = function(id) {
+        $http({ method: 'GET', url: '/api/show/' + id, type: 'application/json' })
             .then(function(response) {
-                $scope.shows = response.data;
+                self.data = response.data;
             }, function(response) {
-                $log.info(response);
-            }
-            );
+                $log.error('Error in the getShow(id) service.\n\n' + response);
+            });
+        return self;
+    };
+
+    this.getShows = function() {
         $http({ method: 'GET', url: '/api/shows', type: 'application/json' })
             .then(function(response) {
-                $scope.shows = response.data;
+                self.data = response.data;
+            }, function(response) {
+                $log.error('Error in the getShows() service.\n\n' + response);
+            }
+            );
+        return self;
+    };
+
+    this.copyShow = function(id) {
+        $http({ method: 'POST', url: '/api/show/copy/' + id, type: 'application/json' })
+            .then(function(response) {
+                self.data = response.data;
             }, function(response) {
                 $log.info(response);
             }
             );
+        return self;
+    };
+
+    this.deleteShow = function(id) {
+        $http({ method: 'DELETE', url: '/api/show/delete/' + id, type: 'application/json' })
+            .then(function(response) {
+                self.data = response.data;
+            }, function(response) {
+                $log.info(response);
+            }
+            );
+    }
+    return self;
+});
+
+gmkShowMetricsApp.controller('displayController', function($scope, $routeParams, showService) {
+    $scope.show = showService.getShow($routeParams.id);
+});
+
+gmkShowMetricsApp.controller('mainController', function($scope, $log, $http, showService) {
+    $scope.shows = showService.getShows();
+
+    $scope.copyShow = function(id) {
+        showService.copyShow(id);
+        $scope.shows = showService.getShows();
     };
 
     $scope.deleteShow = function(id) {
-        $http({ method: 'DELETE', url: '/api/show/delete/' + id, type: 'application/json' })
-            .then(function(response) {
-                $scope.shows = response.data;
-            }, function(response) {
-                $log.info(response);
-            }
-            );
-        // $http({ method: 'GET', url: '/api/shows', type: 'application/json' })
-        //     .then(function(response) {
-        //         $scope.shows = response.data;
-        //     }, function(response) {
-        //         $log.error(response);
-        //     }
-        //     );
+        showService.deleteShow(id);
     };
-
-
-    //var getAllShows = function () {
-    $http({ method: 'GET', url: '/api/shows', type: 'application/json' })
-        .then(function(response) {
-            $scope.shows = response.data;
-        }, function(response) {
-            $log.error(response);
-        }
-        );
-    //};
-
-    //$scope.shows = getAllShows();
 });
