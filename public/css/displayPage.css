@@ -4,10 +4,21 @@
 }
 .red{
     color: red;
+    font-weight: bold;
+}
+.datapoint{
+    font-weight: bold;
+    text-decoration: underline;
+    padding-left: 2px;
 }
 .center{
     text-align: center;
 }
 .right{
     text-align: right;
+}
+.segment{
+    border: solid thin orange;
+    margin: 10px;
+    padding: 5px;
 }

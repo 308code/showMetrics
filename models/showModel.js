@@ -39,6 +39,8 @@ var showSchema = new Schema({
         label : String,
         position : Number,
         part : String,
+        date : String,
+        service : String,
         start : Number,
         end : Number,
         filename : String,

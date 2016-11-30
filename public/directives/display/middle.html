@@ -1,0 +1,18 @@
+<div>
+    <div class="row">
+        <div class="col-md-2 red">{{segment.label}}</div>
+        <div class="col-md-3">TC Start:<span class='datapoint'>{{segment.start}}</span></div>
+        <div class="col-md-7 right">Length: <span class='datapoint red'>{{show.calculateLength(segment)}}</span></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-2">TC End:<span class='datapoint'>{{segment.end}}</span></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 right">File Name:</div>
+        <div class="col-md-10"><span class='datapoint'>{{segment.filename}}</span></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 right">Details:</div>
+        <div class="col-md-10"><span class='datapoint'>{{segment.details}}</span></div>
+    </div>
+</div>
