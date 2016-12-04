@@ -13,14 +13,14 @@
             <tr ng-repeat="show in shows.data">
                 <td>
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" 
+                        <button class="btn btn-primary dropdown-toggle" type="button"
                         data-toggle="dropdown" style="max-width: 500px; white-space: normal;">
                                 {{show.title}} <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                            <li><a ng-click="copyShow(show._id)" href="#">Copy</a></li>
-                            <li><a href="#!/display/{{show._id}}">Display</a></li>
-                            <li><a href="#">Update</a></li>
-                            <li><a ng-click="deleteShow(show._id)" href="#">Delete</a></li>
+                            <li><a ng-click="copyShow(show._id)" href="/#!/update/{{show._id}}">Copy</a></li>
+                            <li><a href="/#!/display/{{show._id}}">Display</a></li>
+                            <li><a href="/#!/update/{{show._id}}">Update</a></li>
+                            <li><a ng-click="deleteShow(show._id)" href="/#!">Delete</a></li>
                         </ul>
                     </div>
                 </td>

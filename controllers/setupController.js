@@ -60,6 +60,7 @@ module.exports = function(app) {
                 details: 'Details about show!'
             }],
             product: [{
+                label: "Product",
                 spot: 'Does God Still Heal?',
                 position: 5,
                 details: 'Details about show!'
@@ -156,6 +157,7 @@ module.exports = function(app) {
                 details: 'Details about show!'
             }],
             product: [{
+                label: 'Product',
                 spot: 'Is God Listening',
                 position: 5,
                 details: 'Details about show!'

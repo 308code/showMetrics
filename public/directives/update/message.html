@@ -1,0 +1,28 @@
+<div>
+    <div class="row">
+        <div class="col-md-1 red">{{segment.label}}:&nbsp;</div>
+        <input class="col-md-1" type='text' ng-model="segment.part" />
+
+        <div class="col-md-1 col-md-offset-1">Service:&nbsp;</div>
+        <input class="col-md-2" type='text' ng-model="segment.service" />
+
+        <div class="col-md-3 col-md-offset-1">Date:&nbsp;
+            <input type='text' ng-model="segment.date" /></div>
+        <div class="col-md-2 right">Length:&nbsp;
+            <span class='datapoint red'>{{show.calculateLength(segment)}}</span></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 right">TC Start:&nbsp;</div>
+        <input type='text' class="col-md-2" ng-model="segment.start" />
+        <div class="col-md-2 right">TC End:&nbsp;</div>
+        <input type='text' class="col-md-2" ng-model="segment.end" />
+    </div>
+    <div class="row">
+        <div class="col-md-2 right">File Name:&nbsp;</div>
+        <input class="col-md-9" type='text' ng-model="segment.filename" />
+    </div>
+    <div class="row">
+        <div class="col-md-2 right">Details:&nbsp;</div>
+        <input class="col-md-9" type='text' ng-model="segment.details" />
+    </div>
+</div>

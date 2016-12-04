@@ -47,6 +47,7 @@ var showSchema = new Schema({
         details : String
     }],
     product : [{
+        label : String,
         spot : String,
         position : Number,
         details : String

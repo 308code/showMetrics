@@ -1,0 +1,45 @@
+<div>
+    <div class="row">
+        <input type='text' class="col-md-12" id="title" ng-model="show.data.title" />
+    </div>
+    <div class="row">
+        <span class='col-md-2 col-md-offset-4 red right'>Show #:&nbsp;</span>
+        <input class='col-md-1' type='text' ng-model="show.data.showNumber" />
+    </div>
+    <div class="row">
+        <span class='col-md-2 red right'>Season:&nbsp;</span>
+        <input class='col-md-1' type='text' ng-model="show.data.season" />
+
+        <span class='col-md-2 col-md-offset-5 red right'>Part/Series:&nbsp;</span>
+        <input class='col-md-1' type='text' ng-model="show.data.series" />
+    </div>
+    <div class="row">
+        <span class='col-md-2 red right'>Wraps Taped:&nbsp;</span>
+        <input class='col-md-2' type='text' ng-model="show.data.wraps" />
+        <span class='col-md-3 col-md-offset-3 red right'>Partner Doner Letter:&nbsp;</span>
+        <input class='col-md-2' type='text' ng-model="show.data.doner" />
+    </div>
+    <br />
+    <div ng-repeat="segment in show.orderedSegments" class="list-group">
+        <update-tease class="list-group-item" ng-if="segment.label === 'Tease'"></update-tease>
+        <update-open class="list-group-item" ng-if="segment.label === 'Open'"></update-open>
+        <update-intro class="list-group-item" ng-if="segment.label === 'Intro'"></update-intro>
+        <update-message class="list-group-item" ng-if="segment.label === 'Message'"></update-message>
+        <update-product class="list-group-item" ng-if="segment.label === 'Product'"></update-product>
+        <update-middle class="list-group-item" ng-if="segment.label === 'Middle'"></update-middle>
+        <update-interview class="list-group-item" ng-if="segment.label === 'Interview'"></update-interview>
+        <update-close class="list-group-item" ng-if="segment.label === 'Close'"></update-close>
+    </div>
+    <div class="row">
+    <span class='col-md-2 red right'>Spots:&nbsp;</span> <input class="col-md-9" type='text' ng-model="show.data.spots"
+    />
+</div>
+<div class="row">
+    <span class='col-md-2 red right'>Credits:&nbsp;</span> <input class="col-md-9" type='text' ng-model="show.data.credits"
+    />
+</div>
+<div class="row">
+    <span class='col-md-2 red right'>Dates Aired:&nbsp;</span> <input class="col-md-9" type='text' ng-model="show.data.aired"
+    />
+</div>
+</div>
