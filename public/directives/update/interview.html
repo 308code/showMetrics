@@ -1,7 +1,7 @@
 <div>
     <div class="row">
-        <div class="col-md-1 red">{{segment.label}}:&nbsp;</div>
-        <input class="col-md-1" type='text' ng-model="segment.part" />
+        <div class="col-md-1 red">{{segment.label}}:</div>
+        <select class="col-md-1" ng-model="segment.part" ng-options="x for x in parts"></select>
         <div class="col-md-10 right">Length: <span class='datapoint red'>
           {{show.calculateLength(segment)}}</span></div>
     </div>

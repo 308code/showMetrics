@@ -1,15 +1,19 @@
-gmkShowMetricsApp.service('showService', function ($http) {
+gmkShowMetricsApp.service('showService', function($http) {
     var self = this;
     this.orderedSegments = [];
 
-    this.calculateLength = function (segment) {
-        if(! segment){
+    this.calculateLength = function(segment) {
+        if (!segment) {
             return '';
         }
         var diff = segment.end - segment.start;
+        if(diff < 0)
+        return 0;
 
         var temp = '' + diff;
+        temp = temp.trim();
         var result = "";
+
         switch (temp.length) {
             case 0:
                 result = '00000000';
@@ -36,11 +40,12 @@ gmkShowMetricsApp.service('showService', function ($http) {
                 result = '0' + diff;
                 break;
             case 8:
-                result = diff;
+                result = '' + diff;
                 break;
             default:
                 result = '00000000';
         }
+
         var ms = parseInt(result.charAt(6) + result.charAt(7));
         var sec = parseInt(result.charAt(4) + result.charAt(5));
         var min = parseInt(result.charAt(2) + result.charAt(3));
@@ -97,75 +102,88 @@ gmkShowMetricsApp.service('showService', function ($http) {
         return result;
     };
 
-    this.orderSegments = function (show) {
+    this.orderSegments = function(show) {
         self.orderedSegments.length = 0;
         for (segment in show.tease) {
-            self.orderedSegments.splice(show.tease[segment].position-1, 0, show.tease[segment]);
+            self.orderedSegments.splice(show.tease[segment].position - 1, 0, show.tease[segment]);
         }
         for (segment in show.open) {
-            self.orderedSegments.splice(show.open[segment].position-1, 0, show.open[segment]);
+            self.orderedSegments.splice(show.open[segment].position - 1, 0, show.open[segment]);
         }
         for (segment in show.intro) {
-            self.orderedSegments.splice(show.intro[segment].position-1, 0, show.intro[segment]);
+            self.orderedSegments.splice(show.intro[segment].position - 1, 0, show.intro[segment]);
         }
         for (segment in show.message) {
-            self.orderedSegments.splice(show.message[segment].position-1, 0, show.message[segment]);
+            self.orderedSegments.splice(show.message[segment].position - 1, 0, show.message[segment]);
         }
         for (segment in show.product) {
-            self.orderedSegments.splice(show.product[segment].position-1, 0, show.product[segment]);
+            self.orderedSegments.splice(show.product[segment].position - 1, 0, show.product[segment]);
         }
         for (segment in show.middle) {
-            self.orderedSegments.splice(show.middle[segment].position-1, 0, show.middle[segment]);
+            self.orderedSegments.splice(show.middle[segment].position - 1, 0, show.middle[segment]);
         }
         for (segment in show.interview) {
-            self.orderedSegments.splice(show.interview[segment].position-1, 0, show.interview[segment]);
+            self.orderedSegments.splice(show.interview[segment].position - 1, 0, show.interview[segment]);
         }
         for (segment in show.close) {
-            self.orderedSegments.splice(show.close[segment].position-1, 0, show.close[segment]);
+            self.orderedSegments.splice(show.close[segment].position - 1, 0, show.close[segment]);
         }
     };
 
-    this.getShow = function (id) {
-        $http({ method: 'GET', url: '/api/show/' + id, type: 'application/json' })
-            .then(function (response) {
+    this.getShow = function(id) {
+        $http({
+                method: 'GET',
+                url: '/api/show/' + id,
+                type: 'application/json'
+            })
+            .then(function(response) {
                 self.data = response.data;
                 self.orderSegments(response.data);
-            }, function (response) {
+            }, function(response) {
                 $log.error('Error in the getShow(id) service.\n\n' + response);
             });
         return self;
     };
 
-    this.getShows = function () {
-        $http({ method: 'GET', url: '/api/shows', type: 'application/json' })
-            .then(function (response) {
+    this.getShows = function() {
+        $http({
+                method: 'GET',
+                url: '/api/shows',
+                type: 'application/json'
+            })
+            .then(function(response) {
                 self.data = response.data;
-            }, function (response) {
+            }, function(response) {
                 $log.error('Error in the getShows() service.\n\n' + response);
-            }
-            );
+            });
         return self;
     };
 
-    this.copyShow = function (id) {
-        $http({ method: 'POST', url: '/api/show/copy/' + id, type: 'application/json' })
-            .then(function (response) {
+    this.copyShow = function(id) {
+        $http({
+                method: 'POST',
+                url: '/api/show/copy/' + id,
+                type: 'application/json'
+            })
+            .then(function(response) {
                 self.data = response.data;
-            }, function (response) {
+            }, function(response) {
                 $log.info(response);
-            }
-            );
+            });
         return self;
     };
 
-    this.deleteShow = function (id) {
-        $http({ method: 'DELETE', url: '/api/show/delete/' + id, type: 'application/json' })
-            .then(function (response) {
+    this.deleteShow = function(id) {
+        $http({
+                method: 'DELETE',
+                url: '/api/show/delete/' + id,
+                type: 'application/json'
+            })
+            .then(function(response) {
                 self.data = response.data;
-            }, function (response) {
+            }, function(response) {
                 $log.info(response);
-            }
-            );
+            });
     }
 
     return self;
