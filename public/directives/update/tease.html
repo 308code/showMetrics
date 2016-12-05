@@ -1,34 +1,19 @@
 <div>
     <div class="row">
         <!--<div class="col-md-2 red">{{segment.label}}</div>-->
-        <select class="selectpicker col-md-1 red">
-            <optgroup label="Keep This...">
-                <option value='{{segment.label}}'>{{segment.label}}</option>
-            </optgroup>
-            <optgroup label="Remove This...">
-                <option value='{{segment.label}}'>{{segment.label}}</option>
-            </optgroup>
-            <optgroup label="Insert Before...">
-                <option value="Tease">Tease</option>
-                <option value="Open">Open</option>
-                <option value="Intro">Intro</option>
-                <option value="Message">Message</option>
-                <option value="Product">Product</option>
-                <option value="Middle">Middle</option>
-                <option value="Interview">Interview</option>
-                <option value="Close">Close</option>
-            </optgroup>
-            <optgroup label="Insert After...">
-                <option value="Tease">Tease</option>
-                <option value="Open">Open</option>
-                <option value="Intro">Intro</option>
-                <option value="Message">Message</option>
-                <option value="Product">Product</option>
-                <option value="Middle">Middle</option>
-                <option value="Interview">Interview</option>
-                <option value="Close">Close</option>
-            </optgroup>
-        </select>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button"
+                id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{segment.label}}<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a ng-click="modifySegment('Remove', segment,'tease')">Remove Segment</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a ng-click="modifySegment('InsertBefore', segment,'tease')">Insert Tease Before Segment</a></li>
+                <li role="separator" class="divider"></li>
+
+            </ul>
+        </div>
         <!--<div class="col-md-4 red">{{segment.label}}</div>-->
         <div class="col-md-11 right">Length: <span class='datapoint red'>{{show.calculateLength(segment)}}</span></div>
     </div>

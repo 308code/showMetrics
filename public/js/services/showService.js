@@ -186,5 +186,7 @@ gmkShowMetricsApp.service('showService', function($http) {
             });
     }
 
+    
+
     return self;
 });
