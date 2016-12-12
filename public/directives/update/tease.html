@@ -1,20 +1,33 @@
 <div>
     <div class="row">
-        <!--<div class="col-md-2 red">{{segment.label}}</div>-->
         <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button"
-                id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                {{segment.label}}<span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <button class="btn btn-default btn-sm dropdown-toggle col-md-1"
+            type="button" data-toggle="dropdown">{{segment.label | uppercase}}
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
                 <li><a ng-click="modifySegment('Remove', segment,'tease')">Remove Segment</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a ng-click="modifySegment('InsertBefore', segment,'tease')">Insert Tease Before Segment</a></li>
+                <li class="dropdown-header">Insert Before</li>
+                <li><a ng-click="modifySegment('InsertBefore', segment,'tease')">Tease</a></li>
+                <li><a ng-click="modifySegment('InsertBefore', segment,'open')">Open</a></li>
+                <li><a ng-click="modifySegment('InsertBefore', segment,'intro')">Intro</a></li>
+                <li><a ng-click="modifySegment('InsertBefore', segment,'message')">Message</a></li>
+                <li><a ng-click="modifySegment('InsertBefore', segment,'product')">Product</a></li>
+                <li><a ng-click="modifySegment('InsertBefore', segment,'middle')">Middle</a></li>
+                <li><a ng-click="modifySegment('InsertBefore', segment,'interview')">Interview</a></li>
+                <li><a ng-click="modifySegment('InsertBefore', segment,'close')">Close</a></li>
                 <li role="separator" class="divider"></li>
-
+                <li class="dropdown-header">Insert After</li>
+                <li><a ng-click="modifySegment('InsertAfter', segment,'tease')">Tease</a></li>
+                <li><a ng-click="modifySegment('InsertAfter', segment,'open')">Open</a></li>
+                <li><a ng-click="modifySegment('InsertAfter', segment,'intro')">Intro</a></li>
+                <li><a ng-click="modifySegment('InsertAfter', segment,'message')">Message</a></li>
+                <li><a ng-click="modifySegment('InsertAfter', segment,'product')">Product</a></li>
+                <li><a ng-click="modifySegment('InsertAfter', segment,'middle')">Middle</a></li>
+                <li><a ng-click="modifySegment('InsertAfter', segment,'interview')">Interview</a></li>
+                <li><a ng-click="modifySegment('InsertAfter', segment,'close')">Close</a></li>
             </ul>
         </div>
-        <!--<div class="col-md-4 red">{{segment.label}}</div>-->
         <div class="col-md-11 right">Length: <span class='datapoint red'>{{show.calculateLength(segment)}}</span></div>
     </div>
     <div class="row">

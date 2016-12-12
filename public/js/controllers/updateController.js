@@ -8,32 +8,14 @@ gmkShowMetricsApp.controller('updateController', function($scope, $routeParams, 
     // type is tease, open, close, etc...
     $scope.modifySegment = function(action, segment, type) {
         if ('Remove' === action) {
-            // first remove the selected segment from the ordered view
-            showService.orderedSegments.splice(segment.position - 1, 1);
-            // next renumber all the remaining displayed segments positions.
-            for (seg in showService.orderedSegments) {
-                if (seg.position > segment.position) {
-                    seg.position = seg.position - 1;
-                }
-            }
-
-            // next remove the selected segment from the stored data.
-            // for (var i = 0; i < $scope.show.data[type].length; i++) {
-            //     if ($scope.show.data[type][i].position === segment.position) {
-            //         $scope.show.data[type].splice(i, 1);
-            //     }
-            // }
-
+            showService.recalculatePositions(segment.position,action,type);
+            showService.orderSegments(showService.data);
         } else if ('InsertBefore' === action) {
-            showService.orderedSegments.splice(segment.position - 1, 0, segment);
-            for (seg in showService.orderedSegments) {
-                if (seg.position > segment.position) {
-                    seg.position = seg.position - 1;
-                }
-            }
+          showService.recalculatePositions(segment.position,action,type);
+          showService.orderSegments(showService.data);
+        }else if ('InsertAfter' === action) {
+          showService.recalculatePositions(segment.position,action,type);
+          showService.orderSegments(showService.data);
         }
-        // if(segment.label === 'Tease'){
-        //   console.log('yea haa!!!!!');
-        // }
     };
 });
