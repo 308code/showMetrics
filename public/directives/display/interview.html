@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        <div class="col-md-2 red">{{segment.label}}:{{segment.part}}</div>
+        <div class="col-md-2 red">{{segment.label | uppercase}} : {{segment.part | uppercase}}</div>
         <div class="col-md-3">TC Start:<span class='datapoint'>{{segment.start}}</span></div>
         <div class="col-md-7 right">Length: <span class='datapoint red'>{{show.calculateLength(segment)}}</span></div>
     </div>

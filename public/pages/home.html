@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="show in shows.data">
+            <tr ng-repeat="show in shows.data | orderBy:'-wraps' | orderBy:'aired'">
                 <td>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button"

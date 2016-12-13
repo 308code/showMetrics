@@ -61,3 +61,11 @@ gmkShowMetricsApp.directive('updateClose', function () {
         replace: true
     };
 });
+
+gmkShowMetricsApp.directive('updateComboBox', function () {
+    return {
+        restrict: 'AE',
+        templateUrl: 'static/directives/update/updateComboBox.html',
+        replace: true
+    };
+});
