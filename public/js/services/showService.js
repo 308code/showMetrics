@@ -1,4 +1,4 @@
-gmkShowMetricsApp.service('showService', function($http) {
+gmkShowMetricsApp.service('showService', function($http, $location) {
     var self = this;
     this.orderedSegments = [];
 
@@ -410,6 +410,21 @@ gmkShowMetricsApp.service('showService', function($http) {
         return self;
     };
 
+    this.updateShow = function(){
+      $http({
+              method: 'POST',
+              url: '/api/show',
+              type: 'application/json',
+              data: self.data
+          })
+          .then(function(response) {
+              self.getShows();
+          }, function(response) {
+              $log.error('Error in the updateShow() service.\n\n' + response);
+          });
+      return self;
+    };
+
     this.getShows = function() {
         $http({
                 method: 'GET',
@@ -450,8 +465,5 @@ gmkShowMetricsApp.service('showService', function($http) {
                 $log.info(response);
             });
     }
-
-
-
     return self;
 });

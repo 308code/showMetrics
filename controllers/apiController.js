@@ -1,25 +1,32 @@
 var Shows = require('../models/showModel');
 var bodyParser = require('body-parser');
 
-module.exports = function (app) {
+module.exports = function(app) {
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
 
-    app.get('/api/shows', function (req, res) {
-        Shows.find({}, function (err, shows) {
+    app.get('/api/shows', function(req, res) {
+        Shows.find({}, null,{sort: {wraps: -1}}, function(err, shows) {
             if (err) throw err;
             res.send(shows);
         });
     });
 
-    app.get('/api/show/:id', function (req, res) {
-        Shows.findById({ _id: req.params.id }, function (err, show) {
+    //Shows.find({}, null, {sort: {date: 1}}, function(err, docs) { ... });
+
+
+    app.get('/api/show/:id', function(req, res) {
+        Shows.findById({
+            _id: req.params.id
+        }, function(err, show) {
             if (err) throw err;
             res.send(show);
         });
     });
 
-    app.post('/api/show', function (req, res) {
+    app.post('/api/show', function(req, res) {
         if (req.body._id) {
             //update existing show
             Shows.findByIdAndUpdate(req.body._id, {
@@ -40,7 +47,7 @@ module.exports = function (app) {
                 middle: req.body.middle,
                 interview: req.body.interview,
                 close: req.body.close
-            }, function (err, show) {
+            }, function(err, show) {
                 if (err) throw err;
                 res.send(show);
             });
@@ -65,7 +72,7 @@ module.exports = function (app) {
                 interview: req.body.interview,
                 close: req.body.close
             });
-            newShow.save(function (err,show) {
+            newShow.save(function(err, show) {
                 if (err) throw err;
                 res.send(show);
             });
@@ -73,8 +80,10 @@ module.exports = function (app) {
     });
 
 
-    app.post('/api/show/copy/:id', function (req, res) {
-        Shows.findById({ _id: req.params.id }, function (err, show) {
+    app.post('/api/show/copy/:id', function(req, res) {
+        Shows.findById({
+            _id: req.params.id
+        }, function(err, show) {
             if (err) throw err;
             var newShow = Shows({
                 title: show.title,
@@ -95,32 +104,32 @@ module.exports = function (app) {
                 interview: show.interview,
                 close: show.close
             });
-            newShow.save(function (err, show) {
+            newShow.save(function(err, show) {
                 if (err) throw err;
                 res.send(show);
             });
         });
     });
 
-    app.delete('/api/show/delete/:id', function (req, res) {
+    app.delete('/api/show/delete/:id', function(req, res) {
         Shows.findByIdAndRemove(req.params.id,
-            function (err) {
+            function(err) {
                 if (err) throw err;
-                Shows.find({}, function (err, shows) {
-            if (err) throw err;
-            res.send(shows);
-        });
+                Shows.find({}, function(err, shows) {
+                    if (err) throw err;
+                    res.send(shows);
+                });
                 //res.send('Successfully Removed!');
             });
     });
 
-    app.delete('/api/show', function (req, res) {
+    app.delete('/api/show', function(req, res) {
         Shows.findByIdAndRemove(req.body._id,
-            function (err) {
+            function(err) {
                 if (err) throw err;
-                Shows.find({}, function (err, shows) {
-                if (err) throw err;
-                res.send(shows);
+                Shows.find({}, function(err, shows) {
+                    if (err) throw err;
+                    res.send(shows);
                 });
                 //res.send('Successfully Removed!');
             });
