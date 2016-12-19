@@ -13,4 +13,8 @@ gmkShowMetricsApp.config(function ($routeProvider) {
             templateUrl: 'static/pages/update.html',
             controller: 'updateController'
         })
+         .when('/create',{
+           templateUrl: 'static/pages/create.html',
+           controller: 'createController'
+         })
 });

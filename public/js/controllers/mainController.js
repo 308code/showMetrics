@@ -1,4 +1,4 @@
-gmkShowMetricsApp.controller('mainController', function ($scope, $log, $http, showService) {
+gmkShowMetricsApp.controller('mainController', function ($scope, $log, $http, $location,showService) {
     $scope.shows = showService.getShows();
     var self = this;
 
@@ -13,5 +13,12 @@ gmkShowMetricsApp.controller('mainController', function ($scope, $log, $http, sh
 
     $scope.deleteShow = function (id) {
         showService.deleteShow(id);
+    };
+    $scope.updateShow = function(){
+      showService.updateShow();
+    }
+    $scope.createShow = function(){
+      showService.createShow();
+      $location.path('/create');
     };
 });

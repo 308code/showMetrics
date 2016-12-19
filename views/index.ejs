@@ -20,25 +20,20 @@
                         <a class="btn btn-primary btn-lg active" role="button"
                         href='/' style="padding: 5px;">Home</a>
                     </li>
-                    <li>
-                        <a class="btn btn-primary btn-lg active" role="button"
-                        href='/' style="padding: 5px;">Create</a>
-                    </li>
                 </ul>
             </div>
         </nav>
-        <div ng-view>
+        <div id ='contentBody'>
+          <div ng-view>
+          </div>
         </div>
+        <br/>
         <nav class="navbar footer">
             <div class="container-fluid">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a class="btn btn-primary btn-lg active" role="button"
                         href='/' style="padding: 5px;">Home</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-primary btn-lg active" role="button"
-                        href='/' style="padding: 5px;">Create</a>
                     </li>
                 </ul>
             </div>
@@ -53,6 +48,7 @@
     <script src="/static/js/controllers/mainController.js"></script>
     <script src="/static/js/controllers/displayController.js"></script>
     <script src="/static/js/controllers/updateController.js"></script>
+    <script src="/static/js/controllers/createController.js"></script>
     <script src="/static/js/services/showService.js"></script>
     <script src="/static/js/directives/display.js"></script>
     <script src="/static/js/directives/update.js"></script>

@@ -1,10 +1,10 @@
 <div>
     <div class="row">
-        <div class="col-md-2 red">{{segment.label | uppercase}} : {{segment.part | uppercase}}</div> 
+        <div class="col-md-2 red">{{segment.label | uppercase}} : {{segment.part | uppercase}}</div>
         <div class="col-md-3 right">Service:<span class="datapoint">
             {{segment.service}}</span></div>
         <div class="col-md-3 right">Date:<span class="datapoint">
-            {{segment.date}}</span></div>
+            {{segment.date | date:'yyyy-MM-dd'}}</span></div>
         <div class="col-md-4 right">Length: <span class='datapoint red'>{{show.calculateLength(segment)}}</span></div>
     </div>
     <div class="row">

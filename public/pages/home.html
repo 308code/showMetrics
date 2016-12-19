@@ -1,4 +1,7 @@
 <div id='homePage'>
+
+      <a ng-click="createShow()" style="padding: 5px;">Create New Show</a>
+
     <table class='table-striped table'>
         <thead>
             <tr>
@@ -26,9 +29,11 @@
                 </td>
                 <td>{{show.showNumber}}</td>
                 <td>{{show.series}}</td>
-                <td>{{show.wraps}}</td>
+                <td>{{show.wraps | date:'yyyy-MM-dd'}}</td>
                 <td>{{show.aired}}</td>
             </tr>
         </tbody>
     </table>
+    <br/>
+    
 </div>

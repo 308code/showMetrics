@@ -14,9 +14,6 @@ module.exports = function(app) {
         });
     });
 
-    //Shows.find({}, null, {sort: {date: 1}}, function(err, docs) { ... });
-
-
     app.get('/api/show/:id', function(req, res) {
         Shows.findById({
             _id: req.params.id

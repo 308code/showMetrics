@@ -1,5 +1,7 @@
 gmkShowMetricsApp.service('showService', function($http, $location) {
+
     var self = this;
+    this.today = new Date();
     this.orderedSegments = [];
 
     this.calculateLength = function(segment) {
@@ -205,7 +207,7 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             }
             if (type === "message") {
                 var blankSegment = "{\"label\": \"message\", \"position\": " +
-                pos + ", \"part\":\"One\", \"date\": \"\", \"start\": 0," +
+                    pos + ", \"part\":\"One\", \"date\": \"\", \"start\": 0," +
                     " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
                     " \"Details about shows message section!\"}";
                 self.data.message.push(JSON.parse(blankSegment));
@@ -217,7 +219,7 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             }
             if (type === "product") {
                 var blankSegment = "{\"label\": \"product\", \"position\": " +
-                pos + ", \"spot\":\"I think its the title!\", \"details\":" +
+                    pos + ", \"spot\":\"I think its the title!\", \"details\":" +
                     " \"Details about shows product section!\"}";
                 self.data.product.push(JSON.parse(blankSegment));
             }
@@ -258,103 +260,103 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
                 self.data.close.push(JSON.parse(blankSegment));
             }
         } //else if (action === "InsertBefore")
-        else if(action === "InsertAfter"){
-          for (segment in self.data.tease) {
-              if (self.data.tease[segment].position > pos) {
-                  self.data.tease[segment].position = self.data.tease[segment].position + 1;
-              }
-          }
-          if (type === "tease") {
-              var blankSegment = "{\"label\": \"tease\", " +
-                  "\"position\": " + (pos + 1) + ", \"start\": 0," +
-                  " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                  " \"Details about shows tease section!\"}";
-              self.data.tease.push(JSON.parse(blankSegment));
-          }
-          for (segment in self.data.open) {
-              if (self.data.open[segment].position > pos) {
-                  self.data.open[segment].position = self.data.open[segment].position + 1;
-              }
-          }
-          if (type === "open") {
-              var blankSegment = "{\"label\": \"open\", " +
-                  "\"position\": " + (pos + 1) + ", \"start\": 0," +
-                  " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                  " \"Details about shows open section!\"}";
-              self.data.open.push(JSON.parse(blankSegment));
-          }
-          for (segment in self.data.intro) {
-              if (self.data.intro[segment].position > pos) {
-                  self.data.intro[segment].position = self.data.intro[segment].position + 1;
-              }
-          }
-          if (type === "intro") {
-              var blankSegment = "{\"label\": \"intro\", " +
-                  "\"position\": " +(pos + 1) + ", \"start\": 0," +
-                  " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                  " \"Details about shows intro section!\"}";
-              self.data.intro.push(JSON.parse(blankSegment));
-          }
-          for (segment in self.data.message) {
-              if (self.data.message[segment].position > pos) {
-                  self.data.message[segment].position = self.data.message[segment].position + 1;
-              }
-          }
-          if (type === "message") {
-              var blankSegment = "{\"label\": \"message\", \"position\": " +
-              (pos + 1) + ", \"part\":\"One\", \"date\": \"\", \"start\": 0," +
-                  " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                  " \"Details about shows message section!\"}";
-              self.data.message.push(JSON.parse(blankSegment));
-          }
-          for (segment in self.data.product) {
-              if (self.data.product[segment].position > pos) {
-                  self.data.product[segment].position = self.data.product[segment].position + 1;
-              }
-          }
-          if (type === "product") {
-              var blankSegment = "{\"label\": \"product\", \"position\": " +
-              (pos + 1) + ", \"spot\":\"I think its the title!\", \"details\":" +
-                  " \"Details about shows product section!\"}";
-              self.data.product.push(JSON.parse(blankSegment));
-          }
-          for (segment in self.data.middle) {
-              if (self.data.middle[segment].position > pos) {
-                  self.data.middle[segment].position = self.data.middle[segment].position + 1;
-              }
-          }
-          if (type === "middle") {
-              var blankSegment = "{\"label\": \"middle\", " +
-                  "\"position\": " + (pos + 1) + ", \"start\": 0," +
-                  " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                  " \"Details about shows middle section!\"}";
-              self.data.middle.push(JSON.parse(blankSegment));
-          }
-          for (segment in self.data.interview) {
-              if (self.data.interview[segment].position > pos) {
-                  self.data.interview[segment].position = self.data.interview[segment].position + 1;
-              }
-          }
-          if (type === "interview") {
-              var blankSegment = "{\"label\": \"interview\", " +
-                  "\"position\": " + (pos + 1) + ", \"part\": \"One\", \"start\": 0," +
-                  " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                  " \"Details about shows interview section!\"}";
-              self.data.interview.push(JSON.parse(blankSegment));
-          }
-          for (segment in self.data.close) {
-              if (self.data.close[segment].position > pos) {
-                  self.data.close[segment].position = self.data.close[segment].position + 1;
-              }
-          }
-          if (type === "close") {
-              var blankSegment = "{\"label\": \"close\", " +
-                  "\"position\": " + (pos + 1) + ", \"start\": 0," +
-                  " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                  " \"Details about shows close section!\"}";
-              self.data.close.push(JSON.parse(blankSegment));
-          }
-        }//else if (action === "InsertAfter")
+        else if (action === "InsertAfter") {
+            for (segment in self.data.tease) {
+                if (self.data.tease[segment].position > pos) {
+                    self.data.tease[segment].position = self.data.tease[segment].position + 1;
+                }
+            }
+            if (type === "tease") {
+                var blankSegment = "{\"label\": \"tease\", " +
+                    "\"position\": " + (pos + 1) + ", \"start\": 0," +
+                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
+                    " \"Details about shows tease section!\"}";
+                self.data.tease.push(JSON.parse(blankSegment));
+            }
+            for (segment in self.data.open) {
+                if (self.data.open[segment].position > pos) {
+                    self.data.open[segment].position = self.data.open[segment].position + 1;
+                }
+            }
+            if (type === "open") {
+                var blankSegment = "{\"label\": \"open\", " +
+                    "\"position\": " + (pos + 1) + ", \"start\": 0," +
+                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
+                    " \"Details about shows open section!\"}";
+                self.data.open.push(JSON.parse(blankSegment));
+            }
+            for (segment in self.data.intro) {
+                if (self.data.intro[segment].position > pos) {
+                    self.data.intro[segment].position = self.data.intro[segment].position + 1;
+                }
+            }
+            if (type === "intro") {
+                var blankSegment = "{\"label\": \"intro\", " +
+                    "\"position\": " + (pos + 1) + ", \"start\": 0," +
+                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
+                    " \"Details about shows intro section!\"}";
+                self.data.intro.push(JSON.parse(blankSegment));
+            }
+            for (segment in self.data.message) {
+                if (self.data.message[segment].position > pos) {
+                    self.data.message[segment].position = self.data.message[segment].position + 1;
+                }
+            }
+            if (type === "message") {
+                var blankSegment = "{\"label\": \"message\", \"position\": " +
+                    (pos + 1) + ", \"part\":\"One\", \"date\": \"\", \"start\": 0," +
+                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
+                    " \"Details about shows message section!\"}";
+                self.data.message.push(JSON.parse(blankSegment));
+            }
+            for (segment in self.data.product) {
+                if (self.data.product[segment].position > pos) {
+                    self.data.product[segment].position = self.data.product[segment].position + 1;
+                }
+            }
+            if (type === "product") {
+                var blankSegment = "{\"label\": \"product\", \"position\": " +
+                    (pos + 1) + ", \"spot\":\"I think its the title!\", \"details\":" +
+                    " \"Details about shows product section!\"}";
+                self.data.product.push(JSON.parse(blankSegment));
+            }
+            for (segment in self.data.middle) {
+                if (self.data.middle[segment].position > pos) {
+                    self.data.middle[segment].position = self.data.middle[segment].position + 1;
+                }
+            }
+            if (type === "middle") {
+                var blankSegment = "{\"label\": \"middle\", " +
+                    "\"position\": " + (pos + 1) + ", \"start\": 0," +
+                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
+                    " \"Details about shows middle section!\"}";
+                self.data.middle.push(JSON.parse(blankSegment));
+            }
+            for (segment in self.data.interview) {
+                if (self.data.interview[segment].position > pos) {
+                    self.data.interview[segment].position = self.data.interview[segment].position + 1;
+                }
+            }
+            if (type === "interview") {
+                var blankSegment = "{\"label\": \"interview\", " +
+                    "\"position\": " + (pos + 1) + ", \"part\": \"One\", \"start\": 0," +
+                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
+                    " \"Details about shows interview section!\"}";
+                self.data.interview.push(JSON.parse(blankSegment));
+            }
+            for (segment in self.data.close) {
+                if (self.data.close[segment].position > pos) {
+                    self.data.close[segment].position = self.data.close[segment].position + 1;
+                }
+            }
+            if (type === "close") {
+                var blankSegment = "{\"label\": \"close\", " +
+                    "\"position\": " + (pos + 1) + ", \"start\": 0," +
+                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
+                    " \"Details about shows close section!\"}";
+                self.data.close.push(JSON.parse(blankSegment));
+            }
+        } //else if (action === "InsertAfter")
     };
 
     this.orderSegments = function(data) {
@@ -410,19 +412,24 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
         return self;
     };
 
-    this.updateShow = function(){
-      $http({
-              method: 'POST',
-              url: '/api/show',
-              type: 'application/json',
-              data: self.data
-          })
-          .then(function(response) {
-              self.getShows();
-          }, function(response) {
-              $log.error('Error in the updateShow() service.\n\n' + response);
-          });
-      return self;
+    this.getNewShow = function() {
+        self.orderSegments(self.data);
+        return self;
+    };
+
+    this.updateShow = function() {
+        $http({
+                method: 'POST',
+                url: '/api/show',
+                type: 'application/json',
+                data: self.data
+            })
+            .then(function(response) {
+                self.getShows();
+            }, function(response) {
+                $log.error('Error in the updateShow() service.\n\n' + response);
+            });
+        return self;
     };
 
     this.getShows = function() {
@@ -465,5 +472,35 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
                 $log.info(response);
             });
     }
+
+    this.createShow = function() {
+      self.data = {};
+        self.data = {
+            "title": "",
+            "showNumber": 1,
+            "season": "",
+            "series": "1 of 1",
+            "wraps": new Date() ,
+            "doner": new Date() ,
+            "spots": "",
+            "credits": true,
+            "aired": "",
+            "close": [],
+            "interview": [],
+            "middle": [],
+            "product": [],
+            "message": [],
+            "intro": [],
+            "open": [],
+            "tease": [{
+                "details": "",
+                "filename": "",
+                "end": 0,
+                "start": 0,
+                "position": 1,
+                "label": "tease"
+            }]
+        };
+    };
     return self;
 });

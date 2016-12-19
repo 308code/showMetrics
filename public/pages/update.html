@@ -1,4 +1,4 @@
-<div>
+<div id='homePage'>
     <div class="row">
         <input type='text' class="col-md-12" id="title" ng-model="show.data.title" />
     </div>
@@ -15,9 +15,11 @@
     </div>
     <div class="row">
         <span class='col-md-2 red right'>Wraps Taped:&nbsp;</span>
-        <input class='col-md-1 calendar' type="text" value="show.data.wraps" ng-model="show.data.wraps" />
-        <span class='col-md-3 col-md-offset-4 red right'>Partner Doner Letter:&nbsp;</span>
-        <input class='col-md-1 calendar' type='text' value="show.data.doner" ng-model="show.data.doner" />
+        <input class='col-md-2 calendar' type='date'
+        ng-value="show.data.wraps | date:'yyyy-MM-dd'" ng-model="show.data.wraps" />
+        <span class='col-md-3 col-md-offset-3 red right'>Partner Doner Letter:&nbsp;</span>
+        <input class='col-md-2 calendar' type='date'
+        ng-value="show.data.doner | date:'yyyy-MM-dd'" ng-model="show.data.doner" />
     </div>
     <br />
     <div ng-repeat="segment in show.orderedSegments" class="list-group">
@@ -34,16 +36,18 @@
         <span class='col-md-2 red right'>Spots:&nbsp;</span> <input class="col-md-9" type='text' ng-model="show.data.spots" />
     </div>
     <div class="row">
-        <span class='col-md-2 red right'>Credits:&nbsp;</span> <input class="col-md-9" type='text' ng-model="show.data.credits" />
+        <span class='col-md-2 red right'>Credits:&nbsp;</span> <input class="col-md-9" type='checkbox' ng-model="show.data.credits" />
     </div>
     <div class="row">
         <span class='col-md-2 red right'>Dates Aired:&nbsp;</span>
         <input class="col-md-9" type='text' ng-model="show.data.aired" />
     </div>
+    <br/>
     <div class='row'>
         <div class="btn-group col-sm-4 col-sm-offset-5">
             <button type="submit" ng-click="updateShow()" class="btn btn-primary btn-sm buttonMargins">Update</button>
             <button type="reset" class="btn btn-primary btn-sm buttonMargins">Reset</button>
         </div>
     </div>
+    <br/>
 </div>

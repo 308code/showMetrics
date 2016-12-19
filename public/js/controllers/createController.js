@@ -1,8 +1,8 @@
-gmkShowMetricsApp.controller('updateController', function($scope, $routeParams,$location, showService) {
+gmkShowMetricsApp.controller('createController', function($scope, $routeParams,$location, showService) {
     $scope.parts = ["One", "Two", "Three", "Four", "Five"];
     $scope.services = ["9:00 AM", "10:30 AM", "12:00 PM", "6:00 PM"];
     $scope.labels = ["Keep Segment", "Remove Segment"];
-    $scope.show = showService.getShow($routeParams.id);
+    $scope.show = showService.getNewShow();
 
     // action is Add or Remove and segment is the segment that was selected and
     // type is tease, open, close, etc...

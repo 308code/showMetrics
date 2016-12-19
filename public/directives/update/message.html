@@ -10,7 +10,7 @@
         <!-- <input class="col-md-2" type='text' ng-model="segment.service" /> -->
 
         <div class="col-md-3">Date:
-            <input type='text' ng-model="segment.date" /></div>
+            <input type='date' ng-value="show.today | date:'yyyy-MM-dd'" ng-model="segment.date" /></div>
         <div class="col-md-2 right">Length:&nbsp;
             <span class='datapoint red'>{{show.calculateLength(segment)}}</span></div>
     </div>
