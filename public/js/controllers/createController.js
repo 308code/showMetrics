@@ -25,7 +25,10 @@ gmkShowMetricsApp.controller('createController', function($scope, $routeParams,$
     };
 
     $scope.returnHome = function(id){
-      showService.deleteShow(id);
+      if(id){
+        showService.deleteShow(id);
+      }
       $location.path("/");
     };
+
 });

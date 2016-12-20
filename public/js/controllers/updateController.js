@@ -28,8 +28,6 @@ gmkShowMetricsApp.controller('updateController', function($scope, $routeParams,$
     };
 
     $scope.createDateInstance = function(storedDate){
-      console.log("storedDate = " + storedDate);
-      console.log(new Date(storedDate).toISOString());
       return new Date(storedDate).toISOString();
     };
 });
