@@ -8,7 +8,7 @@ var setupController = require('./controllers/setupController');
 var apiController = require('./controllers/apiController');
 var homePageController = require('./controllers/homePageController');
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 
 app.use('/static', express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
