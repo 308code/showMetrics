@@ -1,7 +1,7 @@
 gmkShowMetricsApp.service('showService', function($http, $location) {
 
     var self = this;
-    this.today = new Date();
+
     this.orderedSegments = [];
 
     this.calculateLength = function(segment) {
@@ -106,60 +106,65 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
 
     this.recalculatePositions = function(pos, action, type) {
         if (action === "Remove") {
-            for (segment in self.data.tease) {
-                if (self.data.tease[segment].position === pos) {
-                    self.data.tease.splice(segment, 1);
-                } else if (self.data.tease[segment].position > pos) {
-                    self.data.tease[segment].position = self.data.tease[segment].position - 1;
+            if (self.orderedSegments.length <= 1) {
+                alert("Sorry you can't delete the only segment in this show!");
+
+            } else {
+                for (segment in self.data.tease) {
+                    if (self.data.tease[segment].position === pos) {
+                        self.data.tease.splice(segment, 1);
+                    } else if (self.data.tease[segment].position > pos) {
+                        self.data.tease[segment].position = self.data.tease[segment].position - 1;
+                    }
                 }
-            }
-            for (segment in self.data.open) {
-                if (self.data.open[segment].position === pos) {
-                    self.data.open.splice(segment, 1);
-                } else if (self.data.open[segment].position > pos) {
-                    self.data.open[segment].position = self.data.open[segment].position - 1;
+                for (segment in self.data.open) {
+                    if (self.data.open[segment].position === pos) {
+                        self.data.open.splice(segment, 1);
+                    } else if (self.data.open[segment].position > pos) {
+                        self.data.open[segment].position = self.data.open[segment].position - 1;
+                    }
                 }
-            }
-            for (segment in self.data.intro) {
-                if (self.data.intro[segment].position === pos) {
-                    self.data.intro.splice(segment, 1);
-                } else if (self.data.intro[segment].position > pos) {
-                    self.data.intro[segment].position = self.data.intro[segment].position - 1;
+                for (segment in self.data.intro) {
+                    if (self.data.intro[segment].position === pos) {
+                        self.data.intro.splice(segment, 1);
+                    } else if (self.data.intro[segment].position > pos) {
+                        self.data.intro[segment].position = self.data.intro[segment].position - 1;
+                    }
                 }
-            }
-            for (segment in self.data.message) {
-                if (self.data.message[segment].position === pos) {
-                    self.data.message.splice(segment, 1);
-                } else if (self.data.message[segment].position > pos) {
-                    self.data.message[segment].position = self.data.message[segment].position - 1;
+                for (segment in self.data.message) {
+                    if (self.data.message[segment].position === pos) {
+                        self.data.message.splice(segment, 1);
+                    } else if (self.data.message[segment].position > pos) {
+                        self.data.message[segment].position = self.data.message[segment].position - 1;
+                    }
                 }
-            }
-            for (segment in self.data.product) {
-                if (self.data.product[segment].position === pos) {
-                    self.data.product.splice(segment, 1);
-                } else if (self.data.product[segment].position > pos) {
-                    self.data.product[segment].position = self.data.product[segment].position - 1;
+                for (segment in self.data.product) {
+                    if (self.data.product[segment].position === pos) {
+                        self.data.product.splice(segment, 1);
+                    } else if (self.data.product[segment].position > pos) {
+                        self.data.product[segment].position = self.data.product[segment].position - 1;
+                    }
                 }
-            }
-            for (segment in self.data.middle) {
-                if (self.data.middle[segment].position === pos) {
-                    self.data.middle.splice(segment, 1);
-                } else if (self.data.middle[segment].position > pos) {
-                    self.data.middle[segment].position = self.data.middle[segment].position - 1;
+                for (segment in self.data.middle) {
+                    if (self.data.middle[segment].position === pos) {
+                        self.data.middle.splice(segment, 1);
+                    } else if (self.data.middle[segment].position > pos) {
+                        self.data.middle[segment].position = self.data.middle[segment].position - 1;
+                    }
                 }
-            }
-            for (segment in self.data.interview) {
-                if (self.data.interview[segment].position === pos) {
-                    self.data.interview.splice(segment, 1);
-                } else if (self.data.interview[segment].position > pos) {
-                    self.data.interview[segment].position = self.data.interview[segment].position - 1;
+                for (segment in self.data.interview) {
+                    if (self.data.interview[segment].position === pos) {
+                        self.data.interview.splice(segment, 1);
+                    } else if (self.data.interview[segment].position > pos) {
+                        self.data.interview[segment].position = self.data.interview[segment].position - 1;
+                    }
                 }
-            }
-            for (segment in self.data.close) {
-                if (self.data.close[segment].position === pos) {
-                    self.data.close.splice(segment, 1);
-                } else if (self.data.close[segment].position > pos) {
-                    self.data.close[segment].position = self.data.close[segment].position - 1;
+                for (segment in self.data.close) {
+                    if (self.data.close[segment].position === pos) {
+                        self.data.close.splice(segment, 1);
+                    } else if (self.data.close[segment].position > pos) {
+                        self.data.close[segment].position = self.data.close[segment].position - 1;
+                    }
                 }
             }
         } //if (action === "Remove")
@@ -172,8 +177,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "tease") {
                 var blankSegment = "{\"label\": \"tease\", " +
                     "\"position\": " + pos + ", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows tease section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.tease.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.open) {
@@ -184,8 +189,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "open") {
                 var blankSegment = "{\"label\": \"open\", " +
                     "\"position\": " + pos + ", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows open section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.open.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.intro) {
@@ -196,8 +201,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "intro") {
                 var blankSegment = "{\"label\": \"intro\", " +
                     "\"position\": " + pos + ", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows intro section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.intro.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.message) {
@@ -207,9 +212,10 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             }
             if (type === "message") {
                 var blankSegment = "{\"label\": \"message\", \"position\": " +
-                    pos + ", \"part\":\"One\", \"date\": \"\", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows message section!\"}";
+                    pos + ", \"part\":\"One\", \"date\": \"" + new Date().toISOString() +
+                    "\" , \"start\": 0, \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
+                    console.log(blankSegment);
                 self.data.message.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.product) {
@@ -219,8 +225,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             }
             if (type === "product") {
                 var blankSegment = "{\"label\": \"product\", \"position\": " +
-                    pos + ", \"spot\":\"I think its the title!\", \"details\":" +
-                    " \"Details about shows product section!\"}";
+                    pos + ", \"spot\":\"\", \"details\":" +
+                    " \"\"}";
                 self.data.product.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.middle) {
@@ -231,8 +237,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "middle") {
                 var blankSegment = "{\"label\": \"middle\", " +
                     "\"position\": " + pos + ", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows middle section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.middle.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.interview) {
@@ -243,8 +249,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "interview") {
                 var blankSegment = "{\"label\": \"interview\", " +
                     "\"position\": " + pos + ", \"part\": \"One\", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows interview section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.interview.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.close) {
@@ -255,8 +261,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "close") {
                 var blankSegment = "{\"label\": \"close\", " +
                     "\"position\": " + pos + ", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows close section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.close.push(JSON.parse(blankSegment));
             }
         } //else if (action === "InsertBefore")
@@ -269,8 +275,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "tease") {
                 var blankSegment = "{\"label\": \"tease\", " +
                     "\"position\": " + (pos + 1) + ", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows tease section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.tease.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.open) {
@@ -281,8 +287,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "open") {
                 var blankSegment = "{\"label\": \"open\", " +
                     "\"position\": " + (pos + 1) + ", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows open section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.open.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.intro) {
@@ -293,8 +299,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "intro") {
                 var blankSegment = "{\"label\": \"intro\", " +
                     "\"position\": " + (pos + 1) + ", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows intro section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.intro.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.message) {
@@ -304,9 +310,10 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             }
             if (type === "message") {
                 var blankSegment = "{\"label\": \"message\", \"position\": " +
-                    (pos + 1) + ", \"part\":\"One\", \"date\": \"\", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows message section!\"}";
+                    (pos + 1) + ", \"part\":\"One\", \"date\": \"" +
+                    new Date().toISOString() + "\" , \"start\": 0," +
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.message.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.product) {
@@ -316,8 +323,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             }
             if (type === "product") {
                 var blankSegment = "{\"label\": \"product\", \"position\": " +
-                    (pos + 1) + ", \"spot\":\"I think its the title!\", \"details\":" +
-                    " \"Details about shows product section!\"}";
+                    (pos + 1) + ", \"spot\":\"\", \"details\":" +
+                    " \"\"}";
                 self.data.product.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.middle) {
@@ -328,8 +335,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "middle") {
                 var blankSegment = "{\"label\": \"middle\", " +
                     "\"position\": " + (pos + 1) + ", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows middle section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.middle.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.interview) {
@@ -340,8 +347,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "interview") {
                 var blankSegment = "{\"label\": \"interview\", " +
                     "\"position\": " + (pos + 1) + ", \"part\": \"One\", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows interview section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.interview.push(JSON.parse(blankSegment));
             }
             for (segment in self.data.close) {
@@ -352,8 +359,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             if (type === "close") {
                 var blankSegment = "{\"label\": \"close\", " +
                     "\"position\": " + (pos + 1) + ", \"start\": 0," +
-                    " \"end\": 0, \"filename\": \"This is filename\", \"details\":" +
-                    " \"Details about shows close section!\"}";
+                    " \"end\": 0, \"filename\": \"\", \"details\":" +
+                    " \"\"}";
                 self.data.close.push(JSON.parse(blankSegment));
             }
         } //else if (action === "InsertAfter")
@@ -406,6 +413,8 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
             .then(function(response) {
                 self.data = response.data;
                 self.orderSegments(response.data);
+                self.donerDate = new Date(response.data.doner);
+                self.wrapsDate = new Date(response.data.wraps);
             }, function(response) {
                 $log.error('Error in the getShow(id) service.\n\n' + response);
             });
@@ -461,27 +470,32 @@ gmkShowMetricsApp.service('showService', function($http, $location) {
     };
 
     this.deleteShow = function(id) {
-        $http({
-                method: 'DELETE',
-                url: '/api/show/delete/' + id,
-                type: 'application/json'
-            })
-            .then(function(response) {
-                self.data = response.data;
-            }, function(response) {
-                $log.info(response);
-            });
+        if (self.data.length <= 1) {
+            alert("Sorry you are not allowed to remove the only show in the system.\n" +
+                "Please contact the administrator for further assistance.");
+        } else {
+            $http({
+                    method: 'DELETE',
+                    url: '/api/show/delete/' + id,
+                    type: 'application/json'
+                })
+                .then(function(response) {
+                    self.data = response.data;
+                }, function(response) {
+                    $log.info(response);
+                });
+        }
     }
 
     this.createShow = function() {
-      self.data = {};
+        self.data = {};
         self.data = {
-            "title": "",
+            "title": "title goes here!",
             "showNumber": 1,
             "season": "",
             "series": "1 of 1",
-            "wraps": new Date() ,
-            "doner": new Date() ,
+            "wraps": new Date(),
+            "doner": new Date(),
             "spots": "",
             "credits": true,
             "aired": "",

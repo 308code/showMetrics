@@ -22,4 +22,14 @@ gmkShowMetricsApp.controller('updateController', function($scope, $routeParams,$
       showService.updateShow();
       $location.path("/");
     };
+
+    $scope.getShow = function(id){
+      showService.getShow(id);
+    };
+
+    $scope.createDateInstance = function(storedDate){
+      console.log("storedDate = " + storedDate);
+      console.log(new Date(storedDate).toISOString());
+      return new Date(storedDate).toISOString();
+    };
 });

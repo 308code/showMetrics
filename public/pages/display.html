@@ -2,24 +2,24 @@
     <h3 id='title'>{{show.data.title}}</h3>
 
     <div class="row">
-        <div class="col-md-4"><span class='red'>Season: </span> {{show.data.season}}</div>
+        <div class="col-md-3 col-md-offset-1"><span class='red'>Season: </span> {{show.data.season}}</div>
         <div class="col-md-4 center"><span class='red'>Show #: </span> {{show.data.showNumber}}</div>
-        <div class="col-md-4 right"><span class='red'>Part/Series: </span> {{show.data.series}}</div>
+        <div class="col-md-3 right"><span class='red'>Part/Series: </span> {{show.data.series}}</div>
     </div>
     <div class="row">
-        <div class="col-md-4"><span class='red'>Wraps Taped: </span> {{show.data.wraps | date:'yyyy-MM-dd'}}</div>
-        <div class="col-md-8 right"><span class='red'>Partner Doner Letter: </span> {{show.data.doner | date:'yyyy-MM-dd'}}</div>
+        <div class="col-md-3 col-md-offset-1"><span class='red'>Wraps Taped: </span> {{show.data.wraps | date:'yyyy-MM-dd'}}</div>
+        <div class="col-md-7 right"><span class='red'>Partner Doner Letter: </span> {{show.data.doner | date:'yyyy-MM-dd'}}</div>
     </div>
     <br />
     <div ng-repeat="segment in show.orderedSegments" class="list-group">
-        <display-tease class="list-group-item" ng-if="segment.label === 'tease'"></display-tease>
-        <display-open class="list-group-item" ng-if="segment.label === 'open'"></display-open>
-        <display-intro class="list-group-item" ng-if="segment.label === 'intro'"></display-intro>
-        <display-message class="list-group-item" ng-if="segment.label === 'message'"></display-message>
-        <display-product class="list-group-item" ng-if="segment.label === 'product'"></display-product>
-        <display-middle class="list-group-item" ng-if="segment.label === 'middle'"></display-middle>
-        <display-interview class="list-group-item" ng-if="segment.label === 'interview'"></display-interview>
-        <display-close class="list-group-item" ng-if="segment.label === 'close'"></display-close>
+        <display-tease class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'tease'"></display-tease>
+        <display-open class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'open'"></display-open>
+        <display-intro class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'intro'"></display-intro>
+        <display-message class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'message'"></display-message>
+        <display-product class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'product'"></display-product>
+        <display-middle class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'middle'"></display-middle>
+        <display-interview class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'interview'"></display-interview>
+        <display-close class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'close'"></display-close>
     </div>
         <div class="row">
             <div class="col-md-12 left"><span class='red'>Spots: </span> {{show.data.spots}}</div>

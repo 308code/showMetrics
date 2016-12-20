@@ -10,25 +10,25 @@
         <span class='col-md-2 red right'>Season:&nbsp;</span>
         <input class='col-md-1' type='text' ng-model="show.data.season" />
 
-        <span class='col-md-2 col-md-offset-5 red right'>Part/Series:&nbsp;</span>
+        <span class='col-md-2 col-md-offset-4 red right'>Part/Series:&nbsp;</span>
         <input class='col-md-1' type='text' ng-model="show.data.series" />
     </div>
     <div class="row">
         <span class='col-md-2 red right'>Wraps Taped:&nbsp;</span>
         <input class='col-md-2 calendar' type="date" ng-value="show.data.wraps | date:'yyyy-MM-dd'" ng-model="show.data.wraps" />
-        <span class='col-md-3 col-md-offset-3 red right'>Partner Doner Letter:&nbsp;</span>
+        <span class='col-md-3 col-md-offset-2 red right'>Partner Doner Letter:&nbsp;</span>
         <input class='col-md-2 calendar' type='date' ng-value="show.data.doner | date:'yyyy-MM-dd'" ng-model="show.data.doner" />
     </div>
     <br />
     <div ng-repeat="segment in show.orderedSegments" class="list-group">
-        <update-tease class="list-group-item" ng-if="segment.label === 'tease'"></update-tease>
-        <update-open class="list-group-item" ng-if="segment.label === 'open'"></update-open>
-        <update-intro class="list-group-item" ng-if="segment.label === 'intro'"></update-intro>
-        <update-message class="list-group-item" ng-if="segment.label === 'message'"></update-message>
-        <update-product class="list-group-item" ng-if="segment.label === 'product'"></update-product>
-        <update-middle class="list-group-item" ng-if="segment.label === 'middle'"></update-middle>
-        <update-interview class="list-group-item" ng-if="segment.label === 'interview'"></update-interview>
-        <update-close class="list-group-item" ng-if="segment.label === 'close'"></update-close>
+        <update-tease class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'tease'"></update-tease>
+        <update-open class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'open'"></update-open>
+        <update-intro class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'intro'"></update-intro>
+        <update-message class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'message'"></update-message>
+        <update-product class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'product'"></update-product>
+        <update-middle class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'middle'"></update-middle>
+        <update-interview class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'interview'"></update-interview>
+        <update-close class="list-group-item" ng-class-odd="'odd'" ng-class-even="'even'" ng-if="segment.label === 'close'"></update-close>
     </div>
     <div class="row">
         <span class='col-md-2 red right'>Spots:&nbsp;</span> <input class="col-md-9" type='text' ng-model="show.data.spots" />
@@ -44,7 +44,7 @@
     <div class='row'>
         <div class="btn-group col-sm-4 col-sm-offset-5">
             <button type="submit" ng-click="updateShow()" class="btn btn-primary btn-sm buttonMargins">Update</button>
-            <button type="reset" class="btn btn-primary btn-sm buttonMargins">Reset</button>
+            <button type="cancel" ng-click="returnHome(show.data._id)" class="btn btn-primary btn-sm buttonMargins">Cancel</button>
         </div>
     </div>
     <br/>
