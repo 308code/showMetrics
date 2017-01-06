@@ -4,7 +4,8 @@
   "description": "GKM web application that records metrics relating to tv shows developed.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Bill Camphire <308code@gmail.com>",
   "license": "MIT",
